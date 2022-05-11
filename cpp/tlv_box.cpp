@@ -15,6 +15,9 @@
 #include <Winsock2.h>
 #else
 #include <arpa/inet.h>
+#include <endian.h>     // added by DK
+#define htonll htobe64  // added by DK
+#define ntohll be64toh  // added by DK
 #endif //windows
 #include "tlv.h"
 #include "tlv_box.h"
