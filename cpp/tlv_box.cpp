@@ -15,6 +15,9 @@
 #include <Winsock2.h>
 #else
 #include <arpa/inet.h>
+#include <endian.h>     // added by DK
+#define htonll htobe64  // added by DK
+#define ntohll be64toh  // added by DK
 #endif //windows
 #include "tlv.h"
 #include "tlv_box.h"
@@ -410,7 +413,7 @@ int TlvBox::GetTLVList(std::vector<int> &list) const
     for (iter=mTlvMap.begin(); iter != mTlvMap.end(); iter++) {
         list.push_back(iter->first);
     }
-    return list.size();
+    return static_cast<int>(list.size());
 }
 
 } //namespace 

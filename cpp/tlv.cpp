@@ -63,12 +63,12 @@ Tlv::Tlv(int type, double value) : mType(type)
 
 Tlv::Tlv(int type, char* value) : mType(type)
 {
-    Initialize(value, strlen(value)+1);
+    Initialize(value, static_cast<int>(strlen(value))+1);
 }
 
 Tlv::Tlv(int type, std::string value) : mType(type)
 {
-    Initialize(value.c_str(),value.size() + 1);
+    Initialize(value.c_str(),static_cast<int>(value.size()) + 1);
 }
 
 Tlv::Tlv(int type, unsigned char *value, int length) : mType(type)
